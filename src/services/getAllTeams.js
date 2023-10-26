@@ -1,3 +1,4 @@
+import axios from 'axios';
 const VITE_API_FOOTBALL = import.meta.env.VITE_API_FOOTBALL;
 const VITE_FOOTBALL_TOKEN = import.meta.env.VITE_FOOTBALL_TOKEN;
 
