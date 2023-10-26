@@ -6,7 +6,7 @@ export default defineStore('favorite', {
     }),
     getters: {},
     actions: {
-        add: () => {},
-        delete: () => {}
+        addOne: () => {},
+        removeOne: () => {}
     }
 });

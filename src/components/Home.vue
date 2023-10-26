@@ -5,6 +5,8 @@
 
 <script setup>
 import { storeToRefs } from "pinia";
-import { useRouter } from "vue-router";
+import getAllTeams from "../services/getAllTeams";
+
+getAllTeams();
 
 </script>
