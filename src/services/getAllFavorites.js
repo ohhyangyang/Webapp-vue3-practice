@@ -1,0 +1,1 @@
+export default () => localStorage.getItem('favorites').split(',').map((idStr) => Number(idStr)) || []
