@@ -9,6 +9,7 @@
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "axios": "^1.5.1",
+    "cfb.js": "^4.3.2",
     "headlessui": "^0.0.0",
     "heroicons": "^2.0.18",
     "pinia": "^2.1.7",
@@ -16,10 +17,10 @@
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.4",
+    "@vitejs/plugin-vue": "^4.4.0",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.4",
-    "vite": "^1.0.0-rc.13"
+    "vite": "4.5.0"
   }
 }

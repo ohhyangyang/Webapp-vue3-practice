@@ -4,31 +4,35 @@ export default defineStore('favorite', {
     state: () => ({
         favoriteList: []
     }),
-    getters: {},
+    getters: {
+        favoriteListIds() {
+            return this.favoriteList? this.favoriteList.map(x => x.id) : []
+        }
+    },
     actions: {
-        add(id) {
-            if(!localStorage.getItem('favorites')){
-                localStorage.setItem('favorites', []);
+        add(team) {
+            if(!JSON.parse(localStorage.getItem('favorites'))){
+                localStorage.setItem('favorites', JSON.stringify([]));
             }
-            if (!this.favoriteList.includes(id)) {
-                this.favoriteList = [...this.favoriteList, id];
-                localStorage.setItem('favorites', this.favoriteList)
+            if (!this.favoriteListIds.includes(team.id)) {
+                this.favoriteList = [...this.favoriteList, team];
+                localStorage.setItem('favorites', JSON.stringify(this.favoriteList))
             }
             
         },
         remove(id) {
-            this.favoriteList = this.favoriteList.filter((x) => x != id);
-            localStorage.setItem('favorites', this.favoriteList)
+            this.favoriteList = this.favoriteList.filter((x) => x.id != id);
+            localStorage.setItem('favorites', JSON.stringify(this.favoriteList))
         },
-        toggle(id) {
+        toggle(team) {
 
-            if (this.favoriteList.includes(id)) {
-                this.remove(id);
+            if (this.favoriteListIds.includes(team.id)) {
+                this.remove(team);
                 return
             } 
             
             //add
-            this.add(id)
+            this.add(team)
 
             
 
