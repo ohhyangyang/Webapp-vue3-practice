@@ -1,8 +1,9 @@
 import { defineStore } from "pinia";
+import getAllFavorites from "../services/getAllFavorites"
 
 export default defineStore('favorite', {
     state: () => ({
-        favoriteList: []
+        favoriteList: getAllFavorites()
     }),
     getters: {
         favoriteListIds() {

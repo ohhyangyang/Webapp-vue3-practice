@@ -12,8 +12,8 @@ const routes = [
         component: () => import('../components/Favorites.vue'),
     },
     {
-        path: '/team-info',
-        name: 'TeamInfo',
+        path: '/team-info/:id',
+        name: 'Team Info',
         component: () => import('../components/TeamInfo.vue'),
     }
 ]
