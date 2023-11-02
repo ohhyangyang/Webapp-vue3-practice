@@ -5,8 +5,10 @@
         <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
             <div class="flex-shrink-0">
+              <router-link to="/">
               <img class="h-8 w-8" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/American_football_icon_simple.svg/2048px-American_football_icon_simple.svg.png"
                 alt="Your Company" />
+              </router-link>
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
