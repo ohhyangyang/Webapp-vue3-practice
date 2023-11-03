@@ -55,7 +55,7 @@
 
 <script setup>
 import getAllTeams from "../services/getAllTeams";
-import { reactive, ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import useFavoriteStore from "../stores/favoriteStore"
 import { useRouter } from "vue-router";
 
@@ -63,7 +63,11 @@ import CommentDialog from "./CommentDialog.vue"
 
 const router = useRouter();
 const favoriteStore = useFavoriteStore();
-const teamList = reactive(getAllTeams());
+const teamList = ref([]);
+
+onMounted(async () => {
+  teamList.value = await getAllTeams()
+})
 
 const targetTeam = ref(null);
 const toggleFavorite = (teamId) => {
@@ -81,7 +85,7 @@ const submitFavorite = (data) => {
 const order = ref('asc')
 const search = ref('')
 const teamListFinal = computed(() => {
-    return teamList.filter((team) => !search ? team : team.school.toLowerCase().includes(search.value.toLowerCase()))
+    return teamList.value.filter((team) => !search ? team : team.school.toLowerCase().includes(search.value.toLowerCase()))
     .sort((a, b) => {
         if (a.school < b.school) {
             return order.value == 'asc' ? -1 : 1

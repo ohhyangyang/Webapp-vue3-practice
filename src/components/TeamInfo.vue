@@ -1,5 +1,5 @@
 <template>
-  <div class="team-info">
+  <div class="team-info" v-if="team">
     <div class="px-4 sm:px-0">
       <h3 class="text-base font-semibold leading-7 text-gray-900">Team Information</h3>
       <img :src="team.logos ? team.logos[0] : ''" alt="" class="logo">
@@ -39,14 +39,18 @@
 </template>
   
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import getOneTeam from '../services/getOneTeam';
 
 const route = useRoute();
 
 const id = computed(() => route.params.id)
-const team = getOneTeam(id.value);
+const team = ref(null)
+
+onMounted(async () => {
+  team.value = await getOneTeam(id.value)
+})
 
 </script>
 

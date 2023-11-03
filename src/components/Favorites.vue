@@ -36,17 +36,21 @@
 <script setup>
 import useFavoriteStore from "../stores/favoriteStore"
 import getAllTeams from "../services/getAllTeams";
-import { reactive } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import { computed } from "vue";
 
 const router = useRouter();
 const favoriteStore = useFavoriteStore();
-const teamList = reactive(getAllTeams());
+const teamList = ref([]);
+
+onMounted(async () => {
+  teamList.value = await getAllTeams()
+})
 
 const favoriteListWithData = computed(() =>
   favoriteStore.favoriteList.map((favorite) => {
-    const team = teamList.find(x => x.id == favorite.id)
+    const team = teamList.value.find(x => x.id == favorite.id)
     return { ...team, comment: favorite.comment }
   })
 )
